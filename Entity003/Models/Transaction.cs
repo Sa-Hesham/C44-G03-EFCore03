@@ -17,7 +17,7 @@ namespace Entity003.Models
 
 
         public  int AireLineId {  get; set; }
-        public AireLine AireLine { get; set; } =null!;
+        public AireLine aireLine { get; set; } =null!;
 
 
          

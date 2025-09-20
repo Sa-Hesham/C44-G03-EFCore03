@@ -4,6 +4,7 @@ using Entity003.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entity003.Models.Migrations
 {
     [DbContext(typeof(AireDbContext))]
-    partial class AireDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250920185559_AddRemoverRelations")]
+    partial class AddRemoverRelations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -242,9 +245,11 @@ namespace Entity003.Models.Migrations
 
             modelBuilder.Entity("Entity003.Models.AireCraft", b =>
                 {
-                    b.HasOne("Entity003.Models.AireLine", "AireLineOwner")
+                    b.HasOne("Entity003.Models.AireLine", "aireLine")
                         .WithMany("airecraftsOwned")
-                        .HasForeignKey("AireLineOwnerId");
+                        .HasForeignKey("AireLineOwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.OwnsOne("Entity003.Models.Crew", "crewDetails", b1 =>
                         {
@@ -275,7 +280,7 @@ namespace Entity003.Models.Migrations
                                 .HasForeignKey("AireCraftId");
                         });
 
-                    b.Navigation("AireLineOwner");
+                    b.Navigation("aireLine");
 
                     b.Navigation("crewDetails")
                         .IsRequired();

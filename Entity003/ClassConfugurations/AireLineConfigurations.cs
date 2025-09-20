@@ -41,9 +41,13 @@ namespace Entity003.ClassConfugurations
             builder.HasMany(builder => builder.employeesworks)
                 .WithOne(e => e.AireLine)
                 .HasForeignKey(e=>e.AireId)
-                .OnDelete(DeleteBehavior.Restrict);  
-                 
-                
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+
+            builder.HasMany(a => a.transactions)
+                .WithOne(t => t.aireLine)
+                .HasForeignKey(t => t.AireLineId);
 
           
         }

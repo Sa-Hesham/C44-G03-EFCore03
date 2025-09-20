@@ -17,6 +17,13 @@ namespace Entity003.ClassConfugurations
                 .WithOwner();
 
 
+            builder.HasOne(e => e.AireLineOwner)
+                .WithMany(A => A.airecraftsOwned)
+                .HasForeignKey(e => e.AireLineOwnerId)
+                .IsRequired(false);
+              
+           
+                
             
         }
     }

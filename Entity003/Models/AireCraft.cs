@@ -20,8 +20,10 @@ namespace Entity003.Models
 
 
         //aire craft owend by one aire lines
-        public int AireLineOwnerId;
-        public AireLine AireLine { get; set; } = null!;
+        public int AireLineOwnerId { get; set; }
+        public AireLine? AireLineOwner { get; set; } = null!;
+      
+    
 
 
        public ICollection<AireCraftRoute> AireCraftAssign { get; set; }= new List<AireCraftRoute>();  

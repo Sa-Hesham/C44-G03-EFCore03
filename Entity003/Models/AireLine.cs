@@ -32,11 +32,11 @@ namespace Entity003.Models
 
         //AireLine Has many transaction 
 
-        ICollection<Transaction> transactions { get; set; }= new HashSet<Transaction>();    
+       public ICollection<Transaction> transactions { get; set; }= new HashSet<Transaction>();    
 
 
        //aire line Has many aircraft
 
-        ICollection<AireCraft> airecraftsOwned { get; set; } =new HashSet<AireCraft> ();
+       public ICollection<AireCraft> airecraftsOwned { get; set; } =new HashSet<AireCraft> ();
     }
 }
